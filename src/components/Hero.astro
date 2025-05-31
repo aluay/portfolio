@@ -1,0 +1,452 @@
+---
+// Hero section for the ultra minimal portfolio
+---
+
+<section class="hero section">
+	<div class="container container-narrow">
+		<div class="hero-content">
+			<h1 class="text-display fade-in text-feature text-balance" id="hero-name">
+				<span class="name-line">
+					<span class="letter">A</span><span class="letter">b</span><span
+						class="letter">d</span
+					><span class="letter">u</span><span class="letter">l</span><span
+						class="letter">l</span
+					><span class="letter">a</span><span class="letter">h</span>
+				</span>
+				<br />
+				<span class="name-line">
+					<span class="letter">L</span><span class="letter">u</span><span
+						class="letter">a</span
+					><span class="letter">y</span>
+				</span>
+			</h1>
+			<p
+				class="text-body mt-xl fade-in stagger-1"
+				style="color: var(--text-secondary); max-width: 500px;"
+			>
+				I'm a web developer who has a knack for crafting digital interfaces with
+				precision, elegance, and attention to detail.
+			</p>
+		</div>
+		<div class="hero-meta mt-2xl fade-in stagger-3">
+			<div class="meta-grid grid grid-3 gap-xl">
+				<div class="meta-item">
+					<span class="text-xs text-mono" style="color: var(--text-tertiary);"
+						>Based in</span
+					>
+					<p class="text-xs mt-xs">
+						<span data-logo-hover="portland">Portland</span>, OR
+					</p>
+				</div>
+				<div class="meta-item">
+					<span class="text-xs text-mono" style="color: var(--text-tertiary);"
+						>Status</span
+					>
+					<div class="status-container text-xs mt-xs">
+						<span class="status-dot" id="pulse-dot"></span>
+						<span>Learning Human&#8211;Computer Interaction</span>
+					</div>
+				</div>
+				<div class="meta-item">
+					<span class="text-xs text-mono" style="color: var(--text-tertiary);"
+						>Connect</span
+					>
+					<div class="social-links mt-xs">
+						<a
+							href="https://linkedin.com/in/yourusername"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="social-link text-xs"
+							data-logo-hover="linkedin"
+						>
+							LinkedIn
+						</a>
+						<span class="social-separator">·</span>
+						<a
+							href="https://github.com/yourusername"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="social-link text-xs"
+							data-logo-hover="github"
+						>
+							GitHub
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.hero {
+		min-height: 100vh;
+		display: flex;
+		align-items: center;
+	}
+
+	.hero-content {
+		text-align: left;
+	}
+	.hero h1 {
+		position: relative;
+	}
+	.hero h1 .letter {
+		display: inline-block;
+		font-variation-settings:
+			"wght" 200,
+			"opsz" 144;
+		transition: font-variation-settings 0.05s cubic-bezier(0.4, 0, 0.2, 1);
+		will-change: font-variation-settings;
+	}
+
+	.hero h1 .name-line {
+		display: inline-block;
+	}
+
+	.hero h1::after {
+		content: "";
+		position: absolute;
+		bottom: -10px;
+		left: 0;
+		width: 60px;
+		height: 1px;
+		background: var(--text-tertiary);
+		opacity: 0.5;
+	}
+
+	.hero-actions {
+		align-items: center;
+	}
+
+	.meta-grid {
+		border-top: 1px solid var(--border);
+		padding-top: var(--spacing-xl);
+	}
+	.meta-item {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.status-container {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+	}
+
+	.status-dot {
+		display: inline-block;
+		width: 6px;
+		height: 6px;
+		border-radius: 50%;
+		background: #10b981; /* Start with emerald */
+		animation: pulse-colors 4s ease-in-out infinite;
+		position: relative;
+		flex-shrink: 0; /* Prevent dot from shrinking */
+	}
+
+	.status-dot::before {
+		content: "";
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 100%;
+		height: 100%;
+		border-radius: 50%;
+		background: inherit;
+		animation: pulse-ring 4s ease-in-out infinite;
+	}
+
+	@keyframes pulse-colors {
+		0% {
+			background: #10b981; /* Emerald */
+			box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+		}
+		20% {
+			background: #3b82f6; /* Blue */
+			box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+		}
+		40% {
+			background: #8b5cf6; /* Violet */
+			box-shadow: 0 0 0 6px rgba(139, 92, 246, 0.1);
+		}
+		60% {
+			background: #f59e0b; /* Amber */
+			box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.2);
+		}
+		80% {
+			background: #ef4444; /* Red */
+			box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.3);
+		}
+		100% {
+			background: #10b981; /* Back to emerald */
+			box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+		}
+	}
+	@keyframes pulse-ring {
+		0% {
+			transform: translate(-50%, -50%) scale(1);
+			opacity: 0.8;
+		}
+		50% {
+			transform: translate(-50%, -50%) scale(2);
+			opacity: 0.2;
+		}
+		100% {
+			transform: translate(-50%, -50%) scale(1);
+			opacity: 0.8;
+		}
+	}
+	/* Social Links Styling */
+	.social-links {
+		display: flex;
+		align-items: center;
+		gap: 0.5ch;
+	}
+	.social-link {
+		color: var(--text-secondary);
+		text-decoration: none;
+		font-weight: 400;
+		transition: color 0.2s ease;
+		font-size: clamp(0.65rem, 1vw, 0.75rem) !important;
+	}
+
+	.social-link:hover {
+		color: var(--text-primary);
+	}
+
+	.social-separator {
+		color: var(--text-tertiary);
+		font-weight: 300;
+		font-size: 0.9em;
+		animation: breathe 3s ease-in-out infinite;
+		animation-delay: 1.5s;
+		opacity: 0.6;
+	}
+
+	@keyframes breathe {
+		0%,
+		100% {
+			transform: scale(1);
+			opacity: 0.6;
+		}
+		50% {
+			transform: scale(1.2);
+			opacity: 0.9;
+		}
+	} /* Unify meta item text styling */
+	.meta-item p {
+		font-size: clamp(0.65rem, 1vw, 0.75rem);
+		color: var(--text-secondary);
+		font-weight: 400;
+		margin: 0;
+	}
+
+	.meta-item span {
+		font-size: clamp(0.65rem, 1vw, 0.75rem);
+	}
+
+	.meta-item .text-xs {
+		font-size: clamp(0.65rem, 1vw, 0.75rem);
+	}
+
+	/* Hero tech links styling */
+	:global(.hero-tech-link) {
+		color: var(--text-primary);
+		font-weight: 500;
+		text-decoration: none;
+		border-bottom: 1px solid var(--text-tertiary);
+		transition: all 0.2s ease;
+		cursor: pointer;
+	}
+
+	:global(.hero-tech-link:hover) {
+		border-bottom-color: var(--text-primary);
+	}
+
+	@media (max-width: 768px) {
+		.hero {
+			text-align: center;
+			min-height: 100vh;
+			justify-content: center;
+		}
+
+		.hero-actions {
+			flex-direction: column;
+			align-items: center;
+			gap: var(--spacing-md);
+		}
+
+		.meta-grid {
+			grid-template-columns: 1fr;
+			gap: var(--spacing-lg);
+			text-align: left;
+		}
+
+		.hero h1::after {
+			left: 50%;
+			transform: translateX(-50%);
+		}
+	}
+	@media (max-width: 480px) {
+		.hero {
+			min-height: 100vh;
+		}
+	}
+</style>
+
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+		const heroName = document.getElementById("hero-name") as HTMLElement;
+		if (!heroName) return;
+
+		// Get all letter elements
+		const letters = heroName.querySelectorAll(
+			".letter"
+		) as NodeListOf<HTMLElement>;
+		if (letters.length === 0) return;
+		// Configuration for the proximity effect
+		const config = {
+			minWeight: 200, // Minimum font weight (Roboto Flex range: 100-1000)
+			maxWeight: 900, // Maximum font weight for dramatic effect
+			minOpticalSize: 100, // Optical size for display text
+			maxOpticalSize: 144, // Maximum optical size
+			maxDistance: 120, // Maximum distance for effect per letter (pixels)
+			updateThrottle: 8, // ~120fps updates for smoother animation
+		};
+
+		// Track current weights for each letter
+		const letterWeights: number[] = new Array(letters.length).fill(
+			config.minWeight
+		);
+		let lastUpdateTime = 0;
+
+		// Calculate distance from cursor to element center
+		function getDistanceToElement(
+			mouseX: number,
+			mouseY: number,
+			element: HTMLElement
+		): number {
+			const rect = element.getBoundingClientRect();
+			const centerX = rect.left + rect.width / 2;
+			const centerY = rect.top + rect.height / 2;
+
+			const deltaX = mouseX - centerX;
+			const deltaY = mouseY - centerY;
+
+			return Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+		}
+		// Map distance to font weight and optical size with exponential falloff
+		function distanceToVariations(distance: number): {
+			weight: number;
+			opticalSize: number;
+		} {
+			if (distance >= config.maxDistance) {
+				return { weight: config.minWeight, opticalSize: config.minOpticalSize };
+			}
+
+			// Exponential curve for more dramatic effect
+			const normalizedDistance = distance / config.maxDistance;
+			const easedDistance = 1 - Math.pow(normalizedDistance, 1.5);
+
+			const weight = Math.round(
+				config.minWeight + (config.maxWeight - config.minWeight) * easedDistance
+			);
+
+			const opticalSize = Math.round(
+				config.minOpticalSize +
+					(config.maxOpticalSize - config.minOpticalSize) * easedDistance
+			);
+
+			return { weight, opticalSize };
+		}
+		// Update all letters based on cursor position
+		function updateLetters(mouseX: number, mouseY: number): void {
+			letters.forEach((letter, index) => {
+				const distance = getDistanceToElement(mouseX, mouseY, letter);
+				const variations = distanceToVariations(distance);
+
+				// Only update if weight changed significantly
+				if (Math.abs(letterWeights[index] - variations.weight) > 5) {
+					letterWeights[index] = variations.weight;
+					letter.style.fontVariationSettings = `"wght" ${variations.weight}, "opsz" ${variations.opticalSize}`;
+				}
+			});
+		}
+
+		// Reset all letters to minimum weight
+		function resetLetters(): void {
+			letters.forEach((letter, index) => {
+				letterWeights[index] = config.minWeight;
+				letter.style.fontVariationSettings = `"wght" ${config.minWeight}, "opsz" ${config.minOpticalSize}`;
+			});
+		}
+
+		// Mouse move handler with high-frequency updates
+		let isUpdating = false;
+		function handleMouseMove(e: MouseEvent): void {
+			if (isUpdating) return;
+			isUpdating = true;
+
+			const currentTime = performance.now();
+			if (currentTime - lastUpdateTime >= config.updateThrottle) {
+				updateLetters(e.clientX, e.clientY);
+				lastUpdateTime = currentTime;
+			}
+
+			requestAnimationFrame(() => {
+				isUpdating = false;
+			});
+		}
+
+		// Mouse leave handler - return all letters to default weight
+		function handleMouseLeave(): void {
+			resetLetters();
+		}
+
+		// Touch support for mobile devices
+		function handleTouchMove(e: TouchEvent): void {
+			if (e.touches.length > 0) {
+				const touch = e.touches[0];
+				updateLetters(touch.clientX, touch.clientY);
+			}
+		}
+
+		// Touch end - reset letters
+		function handleTouchEnd(): void {
+			resetLetters();
+		}
+
+		// Event listeners with optimized settings
+		document.addEventListener("mousemove", handleMouseMove, {
+			passive: true,
+			capture: false,
+		});
+		document.addEventListener("mouseleave", handleMouseLeave, {
+			passive: true,
+		});
+		document.addEventListener("touchmove", handleTouchMove, {
+			passive: true,
+		});
+		document.addEventListener("touchend", handleTouchEnd, {
+			passive: true,
+		});
+
+		// Additional performance optimization: pause updates when page is hidden
+		document.addEventListener("visibilitychange", () => {
+			if (document.hidden) {
+				resetLetters();
+			}
+		}); // Cleanup function for when component unmounts
+		window.addEventListener("beforeunload", () => {
+			document.removeEventListener("mousemove", handleMouseMove);
+			document.removeEventListener("mouseleave", handleMouseLeave);
+			document.removeEventListener("touchmove", handleTouchMove);
+			document.removeEventListener("touchend", handleTouchEnd);
+		});
+	});
+</script>
+
+<!-- Simple Logo Hover System -->
+<script is:inline src="/js/simple-logo-hover.js"></script>

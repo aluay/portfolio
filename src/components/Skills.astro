@@ -1,0 +1,196 @@
+---
+// Skills section
+---
+
+<section id="skills" class="skills section">
+	<div class="container container-narrow">
+		<div class="skills-content">
+			<h2 class="text-title mb-2xl fade-in">Skills</h2>
+
+			<div class="skills-grid grid grid-3 gap-2xl">
+				<div class="skill-category fade-in stagger-1">
+					<h3
+						class="text-small text-mono mb-md"
+						style="color: var(--text-tertiary);"
+					>
+						Technical
+					</h3>
+					<div class="skill-list">
+						<span class="skill-item">
+							<span class="skill-text" data-logo-hover="python">Python</span>
+						</span>
+						<span class="skill-item">
+							<span class="skill-text" data-logo-hover="javascript"
+								>JavaScript</span
+							>
+							<span class="skill-separator">·</span>
+							<span class="skill-text" data-logo-hover="typescript"
+								>TypeScript</span
+							>
+						</span>
+						<span class="skill-item">
+							<span class="skill-text" data-logo-hover="react">React.js</span>
+							<span class="skill-separator">·</span>
+							<span class="skill-text" data-logo-hover="nextjs">Next.js</span>
+						</span>
+						<span class="skill-item">
+							<span class="skill-text" data-logo-hover="postgresql"
+								>PostgreSQL</span
+							>
+							<span class="skill-separator">·</span>
+							<span class="skill-text" data-logo-hover="mongodb">MongoDB</span>
+							<span class="skill-separator">·</span>
+							<span class="skill-text" data-logo-hover="prisma">Prisma</span>
+						</span>
+						<span class="skill-item">
+							<span class="skill-text" data-logo-hover="aws">AWS</span>
+						</span>
+					</div>
+				</div>
+
+				<div class="skill-category fade-in stagger-2">
+					<h3
+						class="text-small text-mono mb-md"
+						style="color: var(--text-tertiary);"
+					>
+						Systems
+					</h3>
+					<div class="skill-list">
+						<span class="skill-item">
+							<span class="skill-text" data-logo-hover="activedirectory"
+								>Active Directory</span
+							>
+						</span>
+						<span class="skill-item">
+							<span class="skill-text" data-logo-hover="vpn">VPN</span>
+							<span class="skill-separator">·</span>
+							<span class="skill-text" data-logo-hover="mfa">MFA</span>
+						</span>
+						<span class="skill-item">
+							<span class="skill-text" data-logo-hover="jira">Jira</span>
+							<span class="skill-separator">·</span>
+							<span class="skill-text" data-logo-hover="servicenow"
+								>ServiceNow</span
+							>
+						</span>
+						<span class="skill-item">
+							<span class="skill-text" data-logo-hover="splunk">Splunk</span>
+						</span>
+						<span class="skill-item">
+							<span class="skill-text" data-logo-hover="git">Git</span>
+						</span>
+					</div>
+				</div>
+				<div class="skill-category fade-in stagger-3">
+					<h3
+						class="text-small text-mono mb-md"
+						style="color: var(--text-tertiary);"
+					>
+						Soft
+					</h3>
+					<div class="skill-list">
+						<span class="skill-item">
+							<span class="skill-text">Turns Jargon Into Plain Language</span>
+						</span>
+						<span class="skill-item">
+							<span class="skill-text">Problem Solving</span>
+						</span>
+						<span class="skill-item">Technical Leadership</span>
+						<span class="skill-item">
+							<span class="skill-text">Agile</span>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.skills {
+		border-top: 1px solid var(--border);
+	}
+	.skills-grid {
+		align-items: start;
+	}
+
+	.skill-list {
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-xs);
+	}
+	.skill-item {
+		font-size: var(--text-sm);
+		color: var(--text-secondary);
+		line-height: 1.6;
+		font-weight: 400;
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 0.5ch;
+	}
+
+	.skill-text {
+		display: inline;
+	}
+
+	.skill-separator {
+		color: var(--text-tertiary);
+		font-weight: 300;
+		font-size: 0.9em;
+		animation: breathe 3s ease-in-out infinite;
+		transform-origin: center;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 1ch;
+		opacity: 0.6;
+	}
+
+	/* Stagger the breathing animation for organic feel */
+	.skill-item:nth-child(1) .skill-separator {
+		animation-delay: 0s;
+	}
+	.skill-item:nth-child(2) .skill-separator {
+		animation-delay: 0.3s;
+	}
+	.skill-item:nth-child(3) .skill-separator {
+		animation-delay: 0.6s;
+	}
+	.skill-item:nth-child(4) .skill-separator {
+		animation-delay: 0.9s;
+	}
+	.skill-item:nth-child(5) .skill-separator {
+		animation-delay: 1.2s;
+	}
+
+	/* Multiple separators within same item get micro-stagger */
+	.skill-separator:nth-of-type(1) {
+		animation-delay: inherit;
+	}
+	.skill-separator:nth-of-type(2) {
+		animation-delay: calc(var(--delay, 0s) + 0.1s);
+	}
+	.skill-separator:nth-of-type(3) {
+		animation-delay: calc(var(--delay, 0s) + 0.2s);
+	}
+
+	@keyframes breathe {
+		0%,
+		100% {
+			transform: scale(1);
+			opacity: 0.6;
+		}
+		50% {
+			transform: scale(1.2);
+			opacity: 0.9;
+		}
+	}
+
+	@media (max-width: 768px) {
+		.skills-grid {
+			grid-template-columns: 1fr;
+			gap: var(--spacing-xl);
+		}
+	}
+</style>

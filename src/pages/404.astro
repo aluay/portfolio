@@ -1,0 +1,47 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+---
+
+<Layout title="404 — Page Not Found">
+	<Header />
+	<main class="error-page">
+		<div class="container container-narrow">
+			<div class="error-content">
+				<h1 class="text-display text-feature">404</h1>
+				<h2 class="text-title mt-lg">Page Not Found</h2>
+				<p
+					class="text-body mt-md"
+					style="color: var(--text-secondary); max-width: 400px;"
+				>
+					The page you're looking for doesn't exist or has been moved.
+				</p>
+				<div class="error-actions mt-xl">
+					<a href="/" class="button">Return Home</a>
+				</div>
+			</div>
+		</div>
+	</main>
+</Layout>
+
+<style>
+	.error-page {
+		min-height: 100vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		padding-top: 80px;
+	}
+
+	.error-content h1 {
+		opacity: 0.3;
+		font-weight: 100;
+		line-height: 0.8;
+	}
+
+	.error-actions {
+		display: flex;
+		justify-content: center;
+	}
+</style>

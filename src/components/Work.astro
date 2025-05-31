@@ -1,0 +1,93 @@
+---
+// Work section showcasing projects
+---
+
+<section id="work" class="work section">
+	<div class="container container-narrow">
+		<h2 class="text-title mb-2xl fade-in">Selected Work</h2>
+
+		<div class="project-list">
+			<article class="project fade-in stagger-1">
+				<div class="project-header">
+					<h3 class="project-title">E-commerce Platform</h3>
+					<span class="project-year">2024</span>
+				</div>
+				<p class="project-stack">Next.js · TypeScript · Stripe</p>
+			</article>
+
+			<article class="project fade-in stagger-2">
+				<div class="project-header">
+					<h3 class="project-title">Design System</h3>
+					<span class="project-year">2023</span>
+				</div>
+				<p class="project-stack">React · Storybook · Figma</p>
+			</article>
+
+			<article class="project fade-in stagger-3">
+				<div class="project-header">
+					<h3 class="project-title">Mobile App</h3>
+					<span class="project-year">2023</span>
+				</div>
+				<p class="project-stack">React Native · Expo · Firebase</p>
+			</article>
+		</div>
+	</div>
+</section>
+
+<style>
+	.work {
+		border-top: 1px solid var(--border);
+	}
+
+	.project-list {
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-2xl);
+	}
+
+	.project {
+		border-bottom: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.05));
+		padding-bottom: var(--spacing-xl);
+	}
+
+	.project:last-child {
+		border-bottom: none;
+		padding-bottom: 0;
+	}
+
+	.project-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
+		margin-bottom: var(--spacing-sm);
+	}
+
+	.project-title {
+		font-size: var(--text-lg);
+		font-weight: 500;
+		color: var(--text-primary);
+		margin: 0;
+	}
+
+	.project-year {
+		font-family: var(--font-mono);
+		font-size: var(--text-sm);
+		color: var(--text-tertiary);
+		font-weight: 400;
+	}
+
+	.project-stack {
+		font-size: var(--text-sm);
+		color: var(--text-secondary);
+		margin: 0;
+		font-weight: 400;
+	}
+
+	@media (max-width: 768px) {
+		.project-header {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: var(--spacing-xs);
+		}
+	}
+</style>

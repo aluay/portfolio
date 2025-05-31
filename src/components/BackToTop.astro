@@ -1,0 +1,98 @@
+---
+// Back to Top button component
+---
+
+<button id="back-to-top" class="back-to-top" aria-label="Back to top">
+	<svg
+		width="16"
+		height="16"
+		viewBox="0 0 24 24"
+		fill="none"
+		stroke="currentColor"
+		stroke-width="2"
+		stroke-linecap="round"
+		stroke-linejoin="round"
+	>
+		<polyline points="18,15 12,9 6,15"></polyline>
+	</svg>
+</button>
+
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+		const backToTopButton = document.getElementById("back-to-top");
+
+		// Show/hide button based on scroll position
+		function toggleBackToTop() {
+			if (window.scrollY > 500) {
+				backToTopButton?.classList.add("visible");
+			} else {
+				backToTopButton?.classList.remove("visible");
+			}
+		}
+
+		// Scroll to top function
+		function scrollToTop() {
+			window.scrollTo({
+				top: 0,
+				behavior: "smooth",
+			});
+		}
+
+		// Event listeners
+		window.addEventListener("scroll", toggleBackToTop);
+		backToTopButton?.addEventListener("click", scrollToTop);
+
+		// Initial check
+		toggleBackToTop();
+	});
+</script>
+
+<style>
+	.back-to-top {
+		position: fixed;
+		bottom: var(--spacing-xl);
+		right: var(--spacing-xl);
+		width: 48px;
+		height: 48px;
+		background: var(--background);
+		border: 1px solid var(--border);
+		color: var(--text-primary);
+		cursor: pointer;
+		z-index: 100;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transition: var(--transition);
+		opacity: 0;
+		visibility: hidden;
+		transform: translateY(20px);
+	}
+
+	.back-to-top.visible {
+		opacity: 1;
+		visibility: visible;
+		transform: translateY(0);
+	}
+
+	.back-to-top:hover {
+		background: var(--text-primary);
+		color: var(--background);
+		border-color: var(--text-primary);
+		transform: translateY(-2px);
+		box-shadow: var(--shadow-md);
+	}
+
+	.back-to-top:focus-visible {
+		outline: 2px solid var(--text-primary);
+		outline-offset: 2px;
+	}
+
+	@media (max-width: 768px) {
+		.back-to-top {
+			bottom: var(--spacing-lg);
+			right: var(--spacing-lg);
+			width: 44px;
+			height: 44px;
+		}
+	}
+</style>

@@ -1,1 +1,460 @@
-@import "tailwindcss";
+/* Ultra Minimal Portfolio Styles */
+
+:root {
+	--primary: #000000;
+	--secondary: #666666;
+	--accent: #999999;
+	--background: #ffffff;
+	--surface: #fafafa;
+	--text-primary: #3c4043;
+	--text-secondary: #666666;
+	--text-tertiary: #999999;
+	--border: #e5e5e5;
+	--font-primary: "Roboto Flex", -apple-system, BlinkMacSystemFont, "Segoe UI",
+		Roboto, sans-serif;
+	--font-mono: "JetBrains Mono", "SF Mono", Monaco, Inconsolata, "Roboto Mono",
+		Consolas, "Courier New", monospace;
+
+	--spacing-xs: 0.25rem;
+	--spacing-sm: 0.5rem;
+	--spacing-md: 1rem;
+	--spacing-lg: 1.5rem;
+	--spacing-xl: 2rem;
+	--spacing-2xl: 3rem;
+	--spacing-3xl: 4rem;
+	--spacing-4xl: 6rem;
+
+	--transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+	--shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+	--shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+		0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Reset and Base Styles */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: 16px;
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: var(--font-primary);
+	font-weight: 400;
+	line-height: 1.6;
+	color: var(--text-primary);
+	background-color: var(--background);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+	font-feature-settings: "kern" 1, "liga" 1;
+}
+
+/* Typography Hierarchy */
+.text-display {
+	font-size: clamp(3.5rem, 12vw, 8rem);
+	font-variation-settings: "wght" 100, "opsz" 144;
+	line-height: 0.9;
+	letter-spacing: -0.02em;
+}
+
+.text-title {
+	font-size: clamp(1.75rem, 4vw, 3rem);
+	font-variation-settings: "wght" 200, "opsz" 72;
+	line-height: 1.1;
+	letter-spacing: -0.015em;
+}
+
+.text-heading {
+	font-size: clamp(1.25rem, 3vw, 2rem);
+	font-variation-settings: "wght" 300, "opsz" 48;
+	line-height: 1.2;
+	letter-spacing: -0.01em;
+}
+
+.text-subheading {
+	font-size: clamp(1rem, 2vw, 1.25rem);
+	font-weight: 400;
+	line-height: 1.3;
+}
+
+.text-body {
+	font-size: clamp(0.875rem, 1.5vw, 1rem);
+	font-weight: 400;
+	line-height: 1.6;
+}
+
+.text-small {
+	font-size: clamp(0.75rem, 1.2vw, 0.875rem);
+	font-weight: 400;
+	line-height: 1.5;
+}
+
+.text-xs {
+	font-size: clamp(0.65rem, 1vw, 0.75rem);
+	font-weight: 400;
+	line-height: 1.4;
+}
+
+.text-mono {
+	font-family: var(--font-mono);
+	font-variant-numeric: tabular-nums;
+}
+
+/* Enhanced mobile typography */
+@media (max-width: 480px) {
+	.text-display {
+		font-size: clamp(2.5rem, 15vw, 4.5rem);
+		line-height: 0.85;
+	}
+}
+
+/* Advanced Typography Features */
+.text-feature {
+	font-feature-settings: "kern" 1, "liga" 1, "ss01" 1, "cv01" 1;
+}
+
+.text-tabular {
+	font-variant-numeric: tabular-nums;
+}
+
+.text-oldstyle {
+	font-variant-numeric: oldstyle-nums;
+}
+
+/* Text Balancing */
+.text-balance {
+	text-wrap: balance;
+}
+
+/* Hyphenation for better text flow */
+.text-hyphen {
+	hyphens: auto;
+	overflow-wrap: break-word;
+}
+
+/* Layout Utilities */
+.container {
+	width: 100%;
+	max-width: min(90vw, 1200px);
+	margin: 0 auto;
+	padding: 0 var(--spacing-md);
+}
+
+.container-narrow {
+	max-width: min(85vw, 800px);
+}
+
+.section {
+	padding: var(--spacing-4xl) 0;
+}
+
+.section-sm {
+	padding: var(--spacing-2xl) 0;
+}
+
+/* Grid System */
+.grid {
+	display: grid;
+	gap: var(--spacing-xl);
+}
+
+.grid-2 {
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.grid-3 {
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+/* Advanced Grid Utilities */
+.grid-auto-fit {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+	gap: var(--spacing-xl);
+}
+
+.grid-auto-fill {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+	gap: var(--spacing-xl);
+}
+
+/* Flexbox Utilities */
+.flex {
+	display: flex;
+}
+
+.flex-col {
+	flex-direction: column;
+}
+
+.flex-center {
+	align-items: center;
+	justify-content: center;
+}
+
+.flex-between {
+	justify-content: space-between;
+}
+
+.flex-wrap {
+	flex-wrap: wrap;
+}
+
+.gap-sm {
+	gap: var(--spacing-sm);
+}
+.gap-md {
+	gap: var(--spacing-md);
+}
+.gap-lg {
+	gap: var(--spacing-lg);
+}
+.gap-xl {
+	gap: var(--spacing-xl);
+}
+
+/* Spacing Utilities */
+.mt-xs {
+	margin-top: var(--spacing-xs);
+}
+.mt-sm {
+	margin-top: var(--spacing-sm);
+}
+.mt-md {
+	margin-top: var(--spacing-md);
+}
+.mt-lg {
+	margin-top: var(--spacing-lg);
+}
+.mt-xl {
+	margin-top: var(--spacing-xl);
+}
+.mt-2xl {
+	margin-top: var(--spacing-2xl);
+}
+
+.mb-xs {
+	margin-bottom: var(--spacing-xs);
+}
+.mb-sm {
+	margin-bottom: var(--spacing-sm);
+}
+.mb-md {
+	margin-bottom: var(--spacing-md);
+}
+.mb-lg {
+	margin-bottom: var(--spacing-lg);
+}
+.mb-xl {
+	margin-bottom: var(--spacing-xl);
+}
+.mb-2xl {
+	margin-bottom: var(--spacing-2xl);
+}
+
+/* Interactive Elements */
+.link {
+	color: inherit;
+	text-decoration: none;
+	position: relative;
+	transition: var(--transition);
+}
+
+.link:hover {
+	color: var(--text-secondary);
+}
+
+.link-underline::after {
+	content: "";
+	position: absolute;
+	bottom: -2px;
+	left: 0;
+	width: 0;
+	height: 1px;
+	background-color: currentColor;
+	transition: width 0.3s ease;
+}
+
+.link-underline:hover::after {
+	width: 100%;
+}
+
+.button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: var(--spacing-sm) var(--spacing-lg);
+	border: 1px solid var(--border);
+	background: transparent;
+	color: var(--text-primary);
+	font-family: inherit;
+	font-size: var(--text-small);
+	font-weight: 400;
+	text-decoration: none;
+	cursor: pointer;
+	transition: var(--transition);
+	border-radius: 0;
+}
+
+.button:hover {
+	background-color: var(--text-primary);
+	color: var(--background);
+	border-color: var(--text-primary);
+}
+
+/* Card Component */
+.card {
+	background: var(--surface);
+	border: 1px solid var(--border);
+	padding: var(--spacing-xl);
+	transition: var(--transition);
+}
+
+.card:hover {
+	box-shadow: var(--shadow-md);
+}
+
+/* Animations */
+.fade-in {
+	opacity: 0;
+	transform: translateY(20px);
+	animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.stagger-1 {
+	animation-delay: 0.1s;
+}
+.stagger-2 {
+	animation-delay: 0.2s;
+}
+.stagger-3 {
+	animation-delay: 0.3s;
+}
+.stagger-4 {
+	animation-delay: 0.4s;
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+	.section {
+		padding: var(--spacing-2xl) 0;
+	}
+
+	.container {
+		padding: 0 var(--spacing-sm);
+	}
+}
+
+/* Focus Styles */
+*:focus-visible {
+	outline: 2px solid var(--text-primary);
+	outline-offset: 2px;
+}
+
+/* Advanced Focus States */
+.focus-ring:focus-visible {
+	outline: 2px solid var(--text-primary);
+	outline-offset: 4px;
+	border-radius: 2px;
+}
+
+/* Selection Styles */
+::selection {
+	background-color: var(--text-primary);
+	color: var(--background);
+}
+
+/* Cursor Interactions */
+.cursor-pointer {
+	cursor: pointer;
+}
+.cursor-default {
+	cursor: default;
+}
+.cursor-text {
+	cursor: text;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+	width: 6px;
+}
+
+::-webkit-scrollbar-track {
+	background: var(--surface);
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--border);
+	border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: var(--text-tertiary);
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+
+	.fade-in,
+	.animate-fade-up,
+	.animate-slide-in {
+		animation: none;
+		opacity: 1;
+		transform: none;
+	}
+}
+
+/* Subtle Animations */
+.animate-fade-up {
+	animation: fadeUp 0.6s ease forwards;
+}
+
+@keyframes fadeUp {
+	from {
+		opacity: 0;
+		transform: translateY(30px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.animate-slide-in {
+	animation: slideIn 0.8s ease forwards;
+}
+
+@keyframes slideIn {
+	from {
+		opacity: 0;
+		transform: translateX(-20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
