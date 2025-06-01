@@ -60,7 +60,35 @@
 			type: "text",
 			alt: "Human-Computer Interaction",
 			text: "Human–computer interaction (HCI) is the study of how people interact with computers and design of computer interfaces. It focuses on making digital interactions more intuitive, accessible, and user-friendly through research in usability, interface design, and user experience.",
-			color: "#6366f1",
+			color: "#a8216b",
+			background: "rgba(255, 255, 255, 0.95)",
+		},
+		jargon: {
+			type: "text",
+			alt: "Turns Jargon Into Plain Language",
+			text: "I turn dense tech jargon into everyday language, so designers, execs, and clients immediately understand what’s at stake. Clear explanations cut miscommunication and keep projects moving.",
+			color: "#ec1b4b",
+			background: "rgba(255, 255, 255, 0.95)",
+		},
+		problem: {
+			type: "text",
+			alt: " Problem Solving ",
+			text: "I break complex problems into bite-sized pieces, test quick hypotheses, and iterate until the simplest workable solution emerges—keeping projects on schedule and free of over-engineering.",
+			color: "#f26a44",
+			background: "rgba(255, 255, 255, 0.95)",
+		},
+		leadership: {
+			type: "text",
+			alt: " Team Leadership",
+			text: "I keep the team on the same page, make space for ideas, and help folks help each other—so the project moves forward without the drama.",
+			color: "#084db9",
+			background: "rgba(255, 255, 255, 0.95)",
+		},
+		agile: {
+			type: "text",
+			alt: "Agile",
+			text: "Comfortable working in Agile sprints—pitching in on stand-ups, refining tickets, and shipping small chunks each cycle.",
+			color: "#2e9598",
 			background: "rgba(255, 255, 255, 0.95)",
 		},
 	};
@@ -223,8 +251,9 @@
 
 		const img = document.createElement("img");
 		img.src = logoData.url;
-		img.alt = logoData.alt;
+		img.alt = logoData.alt ?? "Logo";
 		img.loading = "lazy";
+		img.decoding = "async";
 
 		preview.appendChild(img);
 		return preview;
