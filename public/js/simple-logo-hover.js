@@ -1,124 +1,67 @@
 (function () {
-	"use strict"; // Logo configuration - essential logos used in the portfolio
+	"use strict";
+
+	// Logo configuration - essential logos used in the portfolio
 	const logoConfig = {
 		react: {
-			url: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+			url: "/hover/react-svgrepo-com.svg",
 			alt: "React",
 			color: "#61DAFB",
 			background: "rgba(0, 20, 30, 0.9)",
 		},
 		typescript: {
-			url: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+			url: "/hover/typescript-icon-svgrepo-com.svg",
 			alt: "TypeScript",
 			color: "#3178C6",
 			background: "rgba(255, 255, 255, 0.95)",
 		},
 		linkedin: {
-			url: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg",
+			url: "/hover/linkedin-icon-svgrepo-com.svg",
 			alt: "LinkedIn",
 			color: "#0A66C2",
 			background: "rgba(255, 255, 255, 0.95)",
 		},
 		github: {
-			url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg",
+			url: "/hover/github-icon-svgrepo-com.svg",
 			alt: "GitHub",
-			color: "#6b7280",
+			color: "#161614",
 			background: "rgba(255, 255, 255, 0.95)",
 		},
 		python: {
-			url: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+			url: "/hover/python-svgrepo-com.svg",
 			alt: "Python",
 			color: "#3776AB",
 			background: "rgba(255, 255, 255, 0.95)",
 		},
 		javascript: {
-			url: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+			url: "/hover/javascript-svgrepo-com.svg",
 			alt: "JavaScript",
 			color: "#F7DF1E",
 			background: "rgba(0, 0, 0, 0.9)",
 		},
 		nextjs: {
-			url: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+			url: "/hover/nextjs-svgrepo-com.svg",
 			alt: "Next.js",
 			color: "#000000",
 			background: "rgba(255, 255, 255, 0.95)",
 		},
-		postgresql: {
-			url: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
-			alt: "PostgreSQL",
-			color: "#336791",
-			background: "rgba(255, 255, 255, 0.95)",
-		},
-		mongodb: {
-			url: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
-			alt: "MongoDB",
-			color: "#47A248",
-			background: "rgba(255, 255, 255, 0.95)",
-		},
-		prisma: {
-			url: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prisma/prisma-original.svg",
-			alt: "Prisma",
-			color: "#2D3748",
-			background: "rgba(255, 255, 255, 0.95)",
-		},
-		aws: {
-			url: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg",
-			alt: "AWS",
-			color: "#FF9900",
-			background: "rgba(0, 20, 35, 0.9)",
-		},
-		activedirectory: {
-			url: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/windows8/windows8-original.svg",
-			alt: "Active Directory",
-			color: "#0078D4",
-			background: "rgba(255, 255, 255, 0.95)",
-		},
-		vpn: {
-			url: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='%236b7280'%3E%3Cpath d='M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z'/%3E%3C/svg%3E",
-			alt: "VPN",
-			color: "#6b7280",
-			background: "rgba(255, 255, 255, 0.95)",
-		},
-		mfa: {
-			url: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='%236b7280'%3E%3Cpath d='M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM12 17c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zM15.1 8H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z'/%3E%3C/svg%3E",
-			alt: "MFA",
-			color: "#6b7280",
-			background: "rgba(255, 255, 255, 0.95)",
-		},
-		jira: {
-			url: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original.svg",
-			alt: "Jira",
-			color: "#0052CC",
-			background: "rgba(255, 255, 255, 0.95)",
-		},
-		servicenow: {
-			url: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='%2362D84E'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z'/%3E%3C/svg%3E",
-			alt: "ServiceNow",
-			color: "#62D84E",
-			background: "rgba(0, 20, 30, 0.9)",
-		},
-		git: {
-			url: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
-			alt: "Git",
-			color: "#F05032",
-			background: "rgba(255, 255, 255, 0.95)",
-		},
-		splunk: {
-			url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/splunk/splunk-original-wordmark.svg",
-			alt: "Splunk",
-			color: "#FF6600",
-			background: "rgba(255, 255, 255, 0.95)",
-		},
-		figma: {
-			url: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",
-			alt: "Figma",
-			color: "#F24E1E",
+		tailwindcss: {
+			url: "/hover/tailwindcss-svgrepo-com.svg",
+			alt: "Tailwind CSS",
+			color: "#06B6D4",
 			background: "rgba(255, 255, 255, 0.95)",
 		},
 		portland: {
-			url: "https://upload.wikimedia.org/wikipedia/commons/8/8a/Portland_Oregon_-_White_Stag_sign_at_dusk.jpg",
+			url: "/hover/Portland_Oregon_-_White_Stag_sign_at_dusk.jpg",
 			alt: "Portland, Oregon - White Stag Sign",
 			color: "#8B7355", // Warm brownish color representative of Portland's sunset/dusk tones
+		},
+		hci: {
+			type: "text",
+			alt: "Human-Computer Interaction",
+			text: "Human–computer interaction (HCI) is the study of how people interact with computers and design of computer interfaces. It focuses on making digital interactions more intuitive, accessible, and user-friendly through research in usability, interface design, and user experience.",
+			color: "#6366f1",
+			background: "rgba(255, 255, 255, 0.95)",
 		},
 	};
 
@@ -195,6 +138,14 @@
 				padding: 2px;
 			}
 
+			.simple-logo-preview.text-preview {
+				width: 320px;
+				height: auto;
+				max-height: 200px;
+				padding: 16px;
+				overflow-y: auto;
+			}
+
 			.simple-logo-hover:hover .simple-logo-preview {
 				opacity: 1;
 				transform: translateX(-50%) scale(1) translateY(0);
@@ -205,11 +156,15 @@
 				height: 100%;
 				object-fit: contain;
 				border-radius: 2px;
-			}
-
-			.simple-logo-preview.image-preview img {
+			}			.simple-logo-preview.image-preview img {
 				object-fit: cover;
 				border-radius: 6px;
+			}			.simple-logo-preview.text-preview .preview-text {
+				font-size: 0.8rem;
+				line-height: 1.6;
+				color: inherit;
+				margin: 0;
+				font-weight: 400;
 			}
 
 			@media (max-width: 768px) {
@@ -224,6 +179,27 @@
 	function createLogoPreview(logoData) {
 		const preview = document.createElement("div");
 		preview.className = "simple-logo-preview";
+
+		// Handle text-based previews
+		if (logoData.type === "text") {
+			preview.classList.add("text-preview");
+
+			// Use provided background and set text color
+			const backgroundColor =
+				logoData.background || "rgba(255, 255, 255, 0.95)";
+			const borderColor = getContrastingBorder(logoData.color);
+
+			preview.style.background = backgroundColor;
+			preview.style.border = `1px solid ${borderColor}`;
+			preview.style.color = logoData.color;
+
+			const textContent = document.createElement("p");
+			textContent.className = "preview-text";
+			textContent.textContent = logoData.text;
+
+			preview.appendChild(textContent);
+			return preview;
+		}
 
 		// Check if this is an image (not an icon) by looking for image file extensions
 		const isImage =
