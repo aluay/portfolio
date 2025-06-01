@@ -1,0 +1,35 @@
+---
+export interface Props {
+  googleAnalyticsId?: string;
+  plausibleDomain?: string;
+}
+
+const { googleAnalyticsId, plausibleDomain } = Astro.props;
+---
+
+<!-- Google Analytics -->
+{googleAnalyticsId && (
+  <>
+    <script async src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`}></script>
+    <script is:inline define:vars={{ googleAnalyticsId }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', googleAnalyticsId);
+    </script>
+  </>
+)}
+
+<!-- Plausible Analytics -->
+{plausibleDomain && (
+  <script defer data-domain={plausibleDomain} src="https://plausible.io/js/script.js"></script>
+)}
+
+<!-- Privacy-friendly analytics setup -->
+<!-- Uncomment when ready to add analytics -->
+<!-- 
+<Analytics 
+  googleAnalyticsId="G-XXXXXXXXXX" 
+  plausibleDomain="yourdomain.com" 
+/>
+-->

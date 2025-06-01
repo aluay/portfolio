@@ -1,0 +1,20 @@
+{
+  "name": "Abdullah Luay Portfolio",
+  "short_name": "Abdullah Luay",
+  "description": "Portfolio of Abdullah Luay, a creative web developer based in Portland, OR",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "categories": ["portfolio", "developer", "technology"],
+  "lang": "en-US",
+  "scope": "/"
+}

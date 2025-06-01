@@ -1,17 +1,53 @@
 # Ultra Minimal Portfolio
 
-A clean, modern, and ultra-minimal portfolio built with Astro, featuring advanced typography techniques and responsive design.
+A clean, modern, and ultra-minimal portfolio built with Astro, featuring advanced typography techniques, responsive design, and comprehensive SEO optimization.
 
 ## ✨ Features
 
 - **Ultra Minimal Design**: Clean, distraction-free layout focusing on content
-- **Advanced Typography**: Professional font pairing with Inter and JetBrains Mono
+- **Advanced Typography**: Professional font pairing with Roboto Flex and JetBrains Mono
 - **Responsive Design**: Optimized for all devices and screen sizes
 - **Performance Optimized**: Built with Astro for fast loading times
-- **Accessibility**: Proper semantic HTML and keyboard navigation
+- **Accessibility**: Proper semantic HTML, ARIA labels, and keyboard navigation
 - **Smooth Animations**: Subtle fade-in effects and micro-interactions
 - **Modern CSS**: CSS Custom Properties, Grid, and Flexbox
-- **SEO Ready**: Proper meta tags and semantic structure
+- **Comprehensive SEO**: 
+  - Structured data (JSON-LD) for Person, Website, and Portfolio schemas
+  - Open Graph and Twitter Card meta tags
+  - Semantic HTML5 elements
+  - Proper heading hierarchy
+  - Sitemap and robots.txt generation
+  - 404 error page
+  - Canonical URLs and meta descriptions
+
+## 🔍 SEO Features
+
+### Meta Tags & Social Media
+- Complete Open Graph implementation for Facebook sharing
+- Twitter Card optimization for rich social media previews
+- Proper meta descriptions and keywords
+- Canonical URLs to prevent duplicate content issues
+
+### Structured Data
+- Person schema for personal branding
+- Website schema for site information
+- Portfolio/CreativeWork schema for project showcase
+- Blog post schema component (ready for future blog posts)
+
+### Technical SEO
+- Semantic HTML5 structure with proper landmarks
+- ARIA labels for accessibility and SEO
+- Image optimization with proper alt attributes
+- Fast loading with resource preloading
+- Clean URL structure
+- Web App Manifest for PWA capabilities
+
+### Search Engine Optimization
+- Automatically generated sitemap.xml
+- Robots.txt configuration
+- 404 error page handling
+- Skip-to-content links for accessibility
+- Proper heading hierarchy (H1-H6)
 
 ## 🚀 Quick Start
 

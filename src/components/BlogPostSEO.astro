@@ -1,0 +1,50 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  publishDate: string;
+  author?: string;
+  image?: string;
+  url?: string;
+  tags?: string[];
+}
+
+const {
+  title,
+  description,
+  publishDate,
+  author = "Abdullah Luay",
+  image,
+  url = Astro.url.href,
+  tags = []
+} = Astro.props;
+
+const fullImageUrl = image && image.startsWith('http') ? image : new URL(image || '/favicon.svg', Astro.site || Astro.url.origin).href;
+---
+
+<!-- Article/Blog Post Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{title}",
+  "description": "{description}",
+  "image": "{fullImageUrl}",
+  "author": {
+    "@type": "Person",
+    "name": "{author}"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "{author}"
+  },
+  "datePublished": "{publishDate}",
+  "dateModified": "{publishDate}",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{url}"
+  },
+  "keywords": {tags.join(", ")},
+  "inLanguage": "en-US"
+}
+</script>

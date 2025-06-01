@@ -1,0 +1,61 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout 
+	title="404 - Page Not Found | Abdullah Luay"
+	description="The page you're looking for doesn't exist. Return to Abdullah Luay's portfolio homepage."
+	noindex={true}
+>
+	<main class="error-page">
+		<div class="container container-narrow">
+			<div class="error-content">
+				<h1 class="text-display">404</h1>
+				<h2 class="text-title mt-md">Page Not Found</h2>
+				<p class="text-body mt-xl" style="color: var(--text-secondary); max-width: 500px;">
+					The page you're looking for doesn't exist or has been moved.
+				</p>
+				<a href="/" class="return-link mt-2xl">
+					← Return to Portfolio
+				</a>
+			</div>
+		</div>
+	</main>
+</Layout>
+
+<style>
+	.error-page {
+		min-height: 100vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+	}
+
+	.error-content h1 {
+		font-size: 6rem;
+		color: var(--text-tertiary);
+		margin: 0;
+	}
+
+	.return-link {
+		display: inline-block;
+		color: var(--text-primary);
+		text-decoration: none;
+		padding: 1rem 2rem;
+		border: 1px solid var(--border);
+		border-radius: 0.5rem;
+		transition: all 0.2s ease;
+	}
+
+	.return-link:hover {
+		background-color: var(--bg-secondary);
+		border-color: var(--text-primary);
+	}
+
+	@media (max-width: 768px) {
+		.error-content h1 {
+			font-size: 4rem;
+		}
+	}
+</style>
