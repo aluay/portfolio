@@ -11,7 +11,7 @@ A clean, modern, and ultra-minimal portfolio built with Astro, featuring advance
 - **Accessibility**: Proper semantic HTML, ARIA labels, and keyboard navigation
 - **Smooth Animations**: Subtle fade-in effects and micro-interactions
 - **Modern CSS**: CSS Custom Properties, Grid, and Flexbox
-- **Comprehensive SEO**: 
+- **Comprehensive SEO**:
   - Structured data (JSON-LD) for Person, Website, and Portfolio schemas
   - Open Graph and Twitter Card meta tags
   - Semantic HTML5 elements
@@ -23,18 +23,21 @@ A clean, modern, and ultra-minimal portfolio built with Astro, featuring advance
 ## 🔍 SEO Features
 
 ### Meta Tags & Social Media
+
 - Complete Open Graph implementation for Facebook sharing
 - Twitter Card optimization for rich social media previews
 - Proper meta descriptions and keywords
 - Canonical URLs to prevent duplicate content issues
 
 ### Structured Data
+
 - Person schema for personal branding
 - Website schema for site information
 - Portfolio/CreativeWork schema for project showcase
 - Blog post schema component (ready for future blog posts)
 
 ### Technical SEO
+
 - Semantic HTML5 structure with proper landmarks
 - ARIA labels for accessibility and SEO
 - Image optimization with proper alt attributes
@@ -43,6 +46,7 @@ A clean, modern, and ultra-minimal portfolio built with Astro, featuring advance
 - Web App Manifest for PWA capabilities
 
 ### Search Engine Optimization
+
 - Automatically generated sitemap.xml
 - Robots.txt configuration
 - 404 error page handling
