@@ -145,10 +145,6 @@ body {
 	padding: 0 var(--spacing-md);
 }
 
-.container-narrow {
-	max-width: min(90vw, 1000px);
-}
-
 .section {
 	padding: var(--spacing-4xl) 0;
 }

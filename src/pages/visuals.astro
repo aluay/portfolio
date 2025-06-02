@@ -1,0 +1,165 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import { Image } from "astro:assets";
+
+// Use import.meta.glob to get all images from the src/assets/visuals folder
+const images = import.meta.glob<{ default: ImageMetadata }>(
+	"../public/visuals/*.{jpeg,jpg,png,gif,webp}"
+);
+
+// Convert the glob result to an array of image data
+const imageEntries = await Promise.all(
+	Object.entries(images).map(async ([path, resolver]) => {
+		const image = await resolver();
+		// Extract filename from path for alt text
+		const filename = path.split("/").pop()?.split(".")[0] || "Image";
+		return {
+			src: image.default,
+			alt: filename.replace(/[-_]/g, " "),
+			path: path,
+		};
+	})
+);
+---
+
+<Layout
+	title="Visuals — Abdullah Luay"
+	description="A collection of visual works and images by Abdullah Luay"
+>
+	<Navbar currentPage="visuals" />
+
+	<main id="main-content" class="visuals-page fade-in">
+		<div class="container">
+			<header class="page-header">
+				<h1 class="text-title">Visuals</h1>
+			</header>
+			{
+				imageEntries.length > 0 ? (
+					<section class="image-grid" aria-label="Visual gallery">
+						{imageEntries.map((image, index) => (
+							<div class="image-item">
+								<Image
+									src={image.src}
+									alt={image.alt}
+									class="gallery-image"
+									loading={index < 6 ? "eager" : "lazy"}
+									quality={85}
+									format="webp"
+									width={600}
+									height={450}
+								/>
+							</div>
+						))}
+					</section>
+				) : (
+					<div class="empty-state">
+						{" "}
+						<div class="empty-content">
+							<h2 class="text-heading">No Visuals Yet</h2>
+						</div>
+					</div>
+				)
+			}
+		</div>
+	</main>
+</Layout>
+
+<style>
+	.visuals-page {
+		min-height: 100vh;
+		padding: var(--spacing-4xl) 0;
+	}
+
+	.page-header {
+		text-align: center;
+		margin-bottom: var(--spacing-4xl);
+	}
+
+	.image-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+		gap: var(--spacing-xl);
+		margin-top: var(--spacing-3xl);
+	}
+	.image-item {
+		position: relative;
+		border-radius: 12px;
+		overflow: hidden;
+		background: var(--surface);
+		transition: var(--transition);
+		aspect-ratio: 4/3;
+		cursor: pointer;
+		box-shadow: var(--shadow-sm);
+	}
+
+	.image-item:hover {
+		transform: translateY(-4px);
+		box-shadow: var(--shadow-md);
+	}
+
+	.gallery-image {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: var(--transition);
+		border-radius: 12px;
+	}
+
+	.image-item:hover .gallery-image {
+		transform: scale(1.02);
+	}
+
+	.empty-state {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 50vh;
+	}
+
+	.empty-content {
+		text-align: center;
+		max-width: 400px;
+	}
+
+	.empty-icon {
+		font-size: 4rem;
+		margin-bottom: var(--spacing-lg);
+		opacity: 0.7;
+	}
+
+	code {
+		background: var(--surface);
+		padding: 0.2em 0.4em;
+		border-radius: 4px;
+		font-family: var(--font-mono);
+		font-size: 0.9em;
+		color: var(--text-primary);
+	}
+
+	@media (max-width: 768px) {
+		.visuals-page {
+			padding: var(--spacing-2xl) 0;
+		}
+
+		.image-grid {
+			grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr));
+			gap: var(--spacing-lg);
+		}
+
+		.page-header {
+			margin-bottom: var(--spacing-2xl);
+		}
+	}
+
+	@media (max-width: 480px) {
+		.image-grid {
+			grid-template-columns: 1fr;
+			gap: var(--spacing-md);
+		}
+
+		.empty-icon {
+			font-size: 3rem;
+		}
+	}
+</style>
