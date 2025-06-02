@@ -1,42 +1,131 @@
 <section id="work" class="work section" aria-label="Portfolio projects">
 	<div class="container container-narrow">
-		<h2 class="text-title mb-2xl fade-in">Selected Work</h2>
+		<h2 class="text-title mb-2xl fade-in">Highlights</h2>
 
 		<div class="project-list" role="list">
-			<article class="project fade-in stagger-1" role="listitem">
-				<div class="project-header">
-					<h3 class="project-title">E-commerce Platform</h3>
-					<time class="project-year" datetime="2024">2024</time>
-				</div>
-				<p class="project-stack" aria-label="Technologies used">
-					Next.js · TypeScript · Stripe
-				</p>
-			</article>
+			<a
+				href="#"
+				target="_blank"
+				rel="noopener noreferrer"
+				aria-label="View project details"
+				class="project-link"
+			>
+				<article class="project fade-in stagger-1" role="listitem">
+					<div class="project-header">
+						<div>
+							<h3 class="project-title">[Redacted]</h3>
+							<span class="project-description"
+								>Content Creation & Publishing Platform</span
+							>
+						</div>
+						<time class="project-year" datetime="2024">Pending</time>
+					</div>
+					<div class="project-stack" role="list" aria-label="Technologies used">
+						<span class="skill-item">
+							<span class="skill-text" data-logo-hover="nextjs">Next.js</span>
+							<span class="skill-separator">·</span>
+							<span class="skill-text" data-logo-hover="typescript"
+								>TypeScript</span
+							>
+							<span class="skill-separator">·</span>
+							<span class="skill-text" data-logo-hover="tailwindcss"
+								>Tailwind CSS</span
+							>
+						</span>
+					</div>
+				</article>
+			</a>
+			<a
+				href="https://github.com/aluay/Vitalize"
+				target="_blank"
+				rel="noopener noreferrer"
+				aria-label="View Vitalize project details"
+				class="project-link"
+			>
+				<article class="project fade-in stagger-1" role="listitem">
+					<div class="project-header">
+						<div>
+							<h3 class="project-title">Vitalize</h3>
+							<span class="project-description">Health & Wellness Platform</span
+							>
+						</div>
+						<time class="project-year" datetime="2024">2024</time>
+					</div>
+					<div class="project-stack" role="list" aria-label="Technologies used">
+						<span class="skill-item">
+							<span class="skill-text" data-logo-hover="react">React.js</span>
+							<span class="skill-separator">·</span>
+							<span class="skill-text" data-logo-hover="javascript"
+								>JavaScript</span
+							>
+							<span class="skill-separator">·</span>
+							<span class="skill-text" data-logo-hover="express">Express</span>
+						</span>
+					</div>
+				</article>
+			</a>
 
-			<article class="project fade-in stagger-2" role="listitem">
-				<div class="project-header">
-					<h3 class="project-title">Design System</h3>
-					<time class="project-year" datetime="2023">2023</time>
-				</div>
-				<p class="project-stack" aria-label="Technologies used">
-					React · Storybook · Figma
-				</p>
-			</article>
-
-			<article class="project fade-in stagger-3" role="listitem">
-				<div class="project-header">
-					<h3 class="project-title">Mobile App</h3>
-					<time class="project-year" datetime="2023">2023</time>
-				</div>
-				<p class="project-stack" aria-label="Technologies used">
-					React Native · Expo · Firebase
-				</p>
-			</article>
+			<a
+				href="https://github.com/aluay/bizwiz"
+				target="_blank"
+				rel="noopener noreferrer"
+				aria-label="View BizWiz project details"
+				class="project-link"
+			>
+				<article class="project fade-in stagger-1" role="listitem">
+					<div class="project-header">
+						<div>
+							<h3 class="project-title">BizWiz</h3>
+							<span class="project-description"
+								>Stock Market & Business Platform</span
+							>
+						</div>
+						<time class="project-year" datetime="2024">2024</time>
+					</div>
+					<div class="project-stack" role="list" aria-label="Technologies used">
+						<span class="skill-item">
+							<span class="skill-text" data-logo-hover="nextjs">Next.js</span>
+							<span class="skill-separator">·</span>
+							<span class="skill-text" data-logo-hover="typescript"
+								>TypeScript</span
+							>
+							<span class="skill-separator">·</span>
+							<span class="skill-text" data-logo-hover="tailwindcss"
+								>Tailwind CSS</span
+							>
+						</span>
+					</div>
+				</article>
+			</a>
 		</div>
 	</div>
 </section>
 
 <style>
+	.project-link {
+		display: block;
+		border: 1px solid transparent;
+		padding: 1rem 0;
+		border-radius: 8px;
+		text-decoration: none;
+		color: inherit;
+
+		transition: transform 0.25s ease;
+	}
+
+	.project-link:hover,
+	.project-link:focus-visible {
+		transform: translateY(-4px);
+	}
+
+	.project-description {
+		color: var(--text-tertiary);
+		font-weight: 400;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		font-size: clamp(0.65rem, 1vw, 0.75rem);
+	}
+
 	.work {
 		border-top: 1px solid var(--border);
 	}
@@ -44,7 +133,7 @@
 	.project-list {
 		display: flex;
 		flex-direction: column;
-		gap: var(--spacing-2xl);
+		gap: var(--spacing-lg);
 	}
 
 	.project {
@@ -72,10 +161,10 @@
 	}
 
 	.project-year {
+		letter-spacing: 0.05em;
+		font-size: clamp(0.65rem, 1vw, 0.75rem);
 		font-family: var(--font-mono);
-		font-size: var(--text-sm);
 		color: var(--text-tertiary);
-		font-weight: 400;
 	}
 
 	.project-stack {

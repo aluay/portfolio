@@ -16,7 +16,7 @@
 			background: "rgba(255, 255, 255, 0.95)",
 		},
 		linkedin: {
-			url: "/hover/linkedin-icon-svgrepo-com.svg",
+			url: "/hover/linkedin-card.jpg",
 			alt: "LinkedIn",
 			color: "#0A66C2",
 			background: "rgba(255, 255, 255, 0.95)",
@@ -42,6 +42,12 @@
 		nextjs: {
 			url: "/hover/nextjs-svgrepo-com.svg",
 			alt: "Next.js",
+			color: "#000000",
+			background: "rgba(255, 255, 255, 0.95)",
+		},
+		express: {
+			url: "/hover/express-svgrepo-com.svg",
+			alt: "Express.js",
 			color: "#000000",
 			background: "rgba(255, 255, 255, 0.95)",
 		},
