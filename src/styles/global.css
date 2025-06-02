@@ -140,13 +140,13 @@ body {
 /* Layout Utilities */
 .container {
 	width: 100%;
-	max-width: min(90vw, 1200px);
+	max-width: min(95vw, 1400px);
 	margin: 0 auto;
 	padding: 0 var(--spacing-md);
 }
 
 .container-narrow {
-	max-width: min(85vw, 800px);
+	max-width: min(90vw, 1000px);
 }
 
 .section {
@@ -164,11 +164,11 @@ body {
 }
 
 .grid-2 {
-	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
 .grid-3 {
-	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
 /* Advanced Grid Utilities */
@@ -350,11 +350,18 @@ body {
 /* Responsive Typography */
 @media (max-width: 768px) {
 	.section {
-		padding: var(--spacing-2xl) 0;
+		padding: var(--spacing-xl) 0;
 	}
 
 	.container {
 		padding: 0 var(--spacing-sm);
+	}
+}
+
+/* Additional mobile-specific padding adjustments */
+@media (max-width: 480px) {
+	.section {
+		padding: var(--spacing-lg) 0;
 	}
 }
 

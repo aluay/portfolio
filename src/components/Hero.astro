@@ -9,7 +9,7 @@
 						class="letter">l</span
 					><span class="letter">a</span><span class="letter">h</span>
 				</span>
-				<br />
+
 				<span class="name-line">
 					<span class="letter">L</span><span class="letter">u</span><span
 						class="letter">a</span
@@ -24,8 +24,8 @@
 				precision, elegance, and attention to detail.
 			</p>
 		</header>
-		<div class="hero-meta mt-2xl fade-in stagger-3">
-			<div class="meta-grid grid grid-3 gap-xl">
+		<div class="hero-meta mt-xl fade-in stagger-3">
+			<div class="meta-grid grid grid-2 gap-xl">
 				<div class="meta-item">
 					<span class="meta-label">Coordinates</span>
 					<div class="status-container mt-xs">
@@ -47,7 +47,7 @@
 					<span class="meta-label">Presence</span>
 					<nav class="social-links mt-xs" aria-label="Social media links">
 						<a
-							href="https://linkedin.com/in/abdullahluay"
+							href="https://www.linkedin.com/in/abdullah-luay/"
 							target="_blank"
 							rel="noopener noreferrer"
 							class="social-link"
@@ -58,7 +58,7 @@
 						</a>
 						<span class="social-separator">·</span>
 						<a
-							href="https://github.com/abdullahluay"
+							href="https://github.com/aluay"
 							target="_blank"
 							rel="noopener noreferrer"
 							class="social-link"
@@ -81,14 +81,13 @@
 		display: flex;
 		align-items: center;
 	}
-
 	.hero-content {
 		text-align: left;
 	}
-
-	/* Hero Name Animation */
 	.hero h1 {
 		position: relative;
+		line-height: 0.9;
+		font-size: clamp(6rem, 14vw, 12rem);
 	}
 
 	.hero h1 .letter {
@@ -98,13 +97,22 @@
 			"opsz" 144;
 		transition: font-variation-settings 0.05s cubic-bezier(0.4, 0, 0.2, 1);
 		will-change: font-variation-settings;
+		/* Prevent layout shifts using transform instead of width changes */
+		position: relative;
+		transform-origin: center;
+		/* Use CSS containment to prevent layout shifts */
+		contain: layout;
 	}
-
 	.hero h1 .name-line {
-		display: inline-block;
+		display: flex;
+		white-space: nowrap;
+		/* Prevent line breaks and maintain natural spacing */
+		overflow: visible;
+		/* Use flexbox to maintain natural letter spacing */
+		align-items: baseline;
 	}
 
-	.hero h1::after {
+	/* .hero h1::after {
 		content: "";
 		position: absolute;
 		bottom: -10px;
@@ -113,12 +121,12 @@
 		height: 1px;
 		background: var(--text-tertiary);
 		opacity: 0.5;
-	}
-
+	} */
 	/* Meta Section */
 	.meta-grid {
 		border-top: 1px solid var(--border);
 		padding-top: var(--spacing-xl);
+		grid-template-columns: 1fr 1fr;
 	}
 
 	.meta-item {
@@ -264,14 +272,21 @@
 
 	:global(.hero-tech-link:hover) {
 		border-bottom-color: var(--text-primary);
-	}
-
-	/* Responsive Design */
+	} /* Responsive Design */
 	@media (max-width: 768px) {
 		.hero {
-			text-align: center;
+			text-align: left;
 			min-height: 100vh;
 			justify-content: center;
+			padding-top: var(--spacing-xl);
+		}
+		.hero h1 .name-line {
+			/* Maintain flexbox layout on mobile for stable letter spacing */
+			display: flex;
+			white-space: nowrap;
+			overflow: visible;
+			align-items: baseline;
+			justify-content: flex-start;
 		}
 
 		.meta-grid {
@@ -279,16 +294,16 @@
 			gap: var(--spacing-lg);
 			text-align: left;
 		}
-
 		.hero h1::after {
-			left: 50%;
-			transform: translateX(-50%);
+			left: 0;
+			transform: none;
 		}
 	}
 
 	@media (max-width: 480px) {
 		.hero {
-			min-height: 100vh;
+			min-height: 90vh;
+			padding-top: var(--spacing-lg);
 		}
 	}
 </style>
