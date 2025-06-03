@@ -4,7 +4,26 @@ import Navbar from "../components/Navbar.astro";
 import { Image } from "astro:assets";
 
 // Image descriptions mapping
-const imageDescriptions: Record<string, string> = {};
+const imageDescriptions: Record<string, string> = {
+	"20170806_042431000_iOS": "Tissue",
+	"20180126_190430688_iOS": "Tissue",
+	"20221213_194622377_iOS": "Burj Khalifa",
+	"20230707_212257823_iOS": "Nike WHQ",
+	"20250419_050832169_iOS": "Space Needle",
+	"20241218_192848229_iOS": "Mt. Hood, OR",
+	"20240716_035910106_iOS": "Sunset",
+	IMG_0630: "Another Sunset",
+	IMG_0581: "Spooky Sunset",
+	IMG_0814: "Alaska Airline - Boeing 737",
+	IMG_0882: "Oregon Coast",
+	IMG_1434: "Dubai, UAE - Aerial View",
+	IMG_1468: "Medina Haram Piazza",
+	IMG_1707: "Rainbow",
+	IMG_1714: "Peace",
+	IMG_1769: "Pie - Seattle",
+	IMG_1770: "Barking Lot - Seattle",
+	IMG_1786: "Pike Place Market - Seattle",
+};
 
 // Use import.meta.glob to get all images from the src/public/visuals folder
 const images = import.meta.glob<{ default: ImageMetadata }>(
@@ -39,556 +58,560 @@ const imageEntries = await Promise.all(
 		<div class="container">
 			<header class="page-header">
 				<h1 class="text-title">Visuals</h1>
-				<p class="text-subtitle">Either taken or created by me</p>
-				{
-					imageEntries.length > 0 ? (
-						<section class="image-grid" aria-label="Visual gallery">
-							{imageEntries.map((image, index) => (
-								<div
-									class="image-item"
-									data-image-src={image.src.src}
-									data-image-alt={image.alt}
-									data-image-description={image.description}>
-									<Image
-										src={image.src}
-										alt={image.alt}
-										class="gallery-image"
-										loading={index < 6 ? "eager" : "lazy"}
-										quality={85}
-										format="webp"
-										width={600}
-										height={450}
-									/>
-								</div>
-							))}
-						</section>
-					) : (
-						<div class="empty-state">
-							{" "}
-							<div class="empty-content">
-								<h2 class="text-heading">No Visuals Yet</h2>
-							</div>
-						</div>
-					)
-				}
+				<p class="sub-label">Taken or created by me.</p>
 			</header>
-		</div>
-
-		<!-- Image Modal -->
-		<div
-			id="image-modal"
-			class="modal"
-			aria-hidden="true"
-			role="dialog"
-			aria-labelledby="modal-title"
-		>
-			<div class="modal-backdrop"></div>
-			<div class="modal-content">
-				<!-- Navigation buttons removed -->
-				<div class="modal-image-container">
-					<img id="modal-image" src="" alt="" />
-					<div class="modal-loader">
-						<div class="loader-spinner"></div>
+			{
+				imageEntries.length > 0 ? (
+					<section class="image-grid" aria-label="Visual gallery">
+						{imageEntries.map((image, index) => (
+							<div
+								class="image-item"
+								data-image-src={image.src.src}
+								data-image-alt={image.alt}
+								data-image-description={image.description}>
+								<Image
+									src={image.src}
+									alt={image.alt}
+									class="gallery-image"
+									loading={index < 6 ? "eager" : "lazy"}
+									quality={85}
+									format="webp"
+									width={600}
+									height={450}
+								/>
+							</div>
+						))}
+					</section>
+				) : (
+					<div class="empty-state">
+						{" "}
+						<div class="empty-content">
+							<h2 class="text-heading">No Visuals Yet</h2>
+						</div>
 					</div>
-					<div class="modal-info">
-						<p id="modal-description" class="modal-image-description"></p>
-					</div>
-				</div>
-				<button
-					class="modal-close"
-					aria-label="Close modal (press ESC)"
-					type="button"
-				>
-					ESC
-				</button>
-			</div>
+				)
+			}
 		</div>
 	</main>
 
-	<style>
-		.visuals-page {
-			min-height: 100vh;
-			padding: var(--spacing-4xl) 0;
-		}
+	<!-- Image Modal -->
+	<div
+		id="image-modal"
+		class="modal"
+		aria-hidden="true"
+		role="dialog"
+		aria-labelledby="modal-title"
+	>
+		<div class="modal-backdrop"></div>
+		<div class="modal-content">
+			<!-- Navigation buttons removed -->
+			<div class="modal-image-container">
+				<img id="modal-image" src="" alt="" />
+				<div class="modal-loader">
+					<div class="loader-spinner"></div>
+				</div>
+				<div class="modal-info">
+					<p id="modal-description" class="modal-image-description"></p>
+				</div>
+			</div>
+			<button
+				class="modal-close"
+				aria-label="Close modal (press ESC)"
+				type="button"
+			>
+				ESC
+			</button>
+		</div>
+	</div>
+</Layout>
 
-		.page-header {
-			text-align: center;
-			margin-bottom: var(--spacing-4xl);
+<style>
+	.visuals-page {
+		min-height: 100vh;
+		padding: var(--spacing-4xl) 0;
+	}
+
+	.page-header {
+		text-align: center;
+		margin-bottom: var(--spacing-4xl);
+	}
+
+	.sub-label {
+		color: var(--text-tertiary);
+		font-weight: 400;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		font-size: clamp(0.65rem, 1vw, 0.75rem);
+	}
+
+	.image-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+		gap: var(--spacing-xl);
+		margin-top: var(--spacing-3xl);
+	}
+	.image-item {
+		position: relative;
+		border-radius: 12px;
+		overflow: hidden;
+		background: var(--surface);
+		transition: var(--transition);
+		aspect-ratio: 4/3;
+		cursor: pointer;
+		box-shadow: var(--shadow-sm);
+	}
+
+	.image-item:hover {
+		transform: translateY(-4px);
+		box-shadow: var(--shadow-md);
+	}
+
+	.gallery-image {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: var(--transition);
+		border-radius: 12px;
+	}
+	.image-item:hover .gallery-image {
+		transform: scale(1.02);
+	}
+
+	/* Modal Styles */
+	.modal {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 1000;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		visibility: hidden;
+		pointer-events: none;
+		transition: visibility 0s linear 0.3s;
+	}
+
+	.modal.active {
+		visibility: visible;
+		pointer-events: all;
+		transition: visibility 0s;
+	}
+	.modal-backdrop {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		opacity: 0;
+		background-color: rgba(0, 0, 0, 0.7);
+		backdrop-filter: blur(8px);
+		transition: opacity 0.3s ease;
+		cursor: pointer;
+	}
+
+	.modal.active .modal-backdrop {
+		opacity: 1;
+	}
+	.modal-content {
+		position: relative;
+		max-width: 90vw;
+		max-height: 90vh;
+		margin: auto;
+		background: transparent;
+		border-radius: 12px;
+		overflow: hidden;
+		transform: scale(0.95);
+		opacity: 0;
+		transition:
+			transform 0.3s ease,
+			opacity 0.3s ease;
+		will-change: transform, opacity;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.modal.active .modal-content {
+		transform: scale(1);
+		opacity: 1;
+	}
+
+	.modal-close {
+		position: absolute;
+		bottom: 0px;
+		left: 50%;
+		transform: translateX(-50%);
+		z-index: 10;
+		background: rgba(255, 255, 255, 0.2);
+		border-radius: 8px;
+		padding: 6px 8px;
+		font-size: 12px;
+		letter-spacing: 1px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		color: white;
+		transition: var(--transition);
+		border: 1px solid hsla(0, 0%, 100%, 0.05);
+	}
+
+	.modal-close:hover {
+		border: 1px solid rgba(255, 255, 255, 0.616);
+	}
+	/* Navigation buttons removed */
+
+	.modal-image-container {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		padding: 2rem;
+	}
+
+	.modal-loader {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		display: none;
+	}
+
+	.loader-spinner {
+		width: 40px;
+		height: 40px;
+		border: 3px solid rgba(255, 255, 255, 0.3);
+		border-top: 3px solid white;
+		border-radius: 50%;
+		animation: spin 1s linear infinite;
+	}
+
+	@keyframes spin {
+		0% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+	.modal-info {
+		color: white;
+		padding: 12px 24px;
+		text-align: center;
+		width: 100%;
+		border-radius: 0 0 8px 8px;
+		margin-top: 0;
+		transition: opacity 0.3s ease;
+	}
+
+	.modal-image-title {
+		margin: 0;
+		font-size: 1.1rem;
+		font-weight: 600;
+	}
+
+	.modal-image-description {
+		margin: 8px 0 0;
+		font-size: 0.95rem;
+		opacity: 0.9;
+		line-height: 1.5;
+	}
+
+	#modal-image {
+		max-width: 75vw;
+		max-height: 75vh;
+		width: auto;
+		height: auto;
+		object-fit: contain;
+		border-radius: 8px;
+	}
+
+	/* Body scroll lock when modal is open */
+	:global(body.modal-open) {
+		overflow: hidden;
+	}
+
+	.empty-state {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 50vh;
+	}
+
+	.empty-content {
+		text-align: center;
+		max-width: 400px;
+	}
+
+	.empty-icon {
+		font-size: 4rem;
+		margin-bottom: var(--spacing-lg);
+		opacity: 0.7;
+	}
+
+	code {
+		background: var(--surface);
+		padding: 0.2em 0.4em;
+		border-radius: 4px;
+		font-family: var(--font-mono);
+		font-size: 0.9em;
+		color: var(--text-primary);
+	}
+	@media (max-width: 768px) {
+		.visuals-page {
+			padding: var(--spacing-2xl) 0;
 		}
 
 		.image-grid {
-			display: grid;
-			grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
-			gap: var(--spacing-xl);
-			margin-top: var(--spacing-3xl);
-		}
-		.image-item {
-			position: relative;
-			border-radius: 12px;
-			overflow: hidden;
-			background: var(--surface);
-			transition: var(--transition);
-			aspect-ratio: 4/3;
-			cursor: pointer;
-			box-shadow: var(--shadow-sm);
+			grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr));
+			gap: var(--spacing-lg);
 		}
 
-		.image-item:hover {
-			transform: translateY(-4px);
-			box-shadow: var(--shadow-md);
-		}
-
-		.gallery-image {
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-			transition: var(--transition);
-			border-radius: 12px;
-		}
-		.image-item:hover .gallery-image {
-			transform: scale(1.02);
-		}
-
-		/* Modal Styles */
-		.modal {
-			position: fixed;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			z-index: 1000;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			visibility: hidden;
-			pointer-events: none;
-			transition: visibility 0s linear 0.3s;
-		}
-
-		.modal.active {
-			visibility: visible;
-			pointer-events: all;
-			transition: visibility 0s;
-		}
-		.modal-backdrop {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			opacity: 0;
-			background-color: rgba(0, 0, 0, 0.7);
-			backdrop-filter: blur(8px);
-			transition: opacity 0.3s ease;
-			cursor: pointer;
-		}
-
-		.modal.active .modal-backdrop {
-			opacity: 1;
+		.page-header {
+			margin-bottom: var(--spacing-2xl);
 		}
 		.modal-content {
-			position: relative;
-			max-width: 90vw;
-			max-height: 90vh;
-			margin: auto;
-			background: transparent;
-			border-radius: 12px;
-			overflow: hidden;
-			transform: scale(0.95);
-			opacity: 0;
-			transition:
-				transform 0.3s ease,
-				opacity 0.3s ease;
-			will-change: transform, opacity;
-			display: flex;
-			flex-direction: column;
-			align-items: center;
+			max-width: 95vw;
+			max-height: 85vh;
 		}
-
-		.modal.active .modal-content {
-			transform: scale(1);
-			opacity: 1;
+		#modal-image {
+			max-width: 100%;
 		}
-
-		.modal-close {
-			position: absolute;
-			bottom: 0px;
-			left: 50%;
-			transform: translateX(-50%);
-			z-index: 10;
-			background: rgba(255, 255, 255, 0.2);
-			border-radius: 8px;
-			padding: 6px 8px;
-			font-size: 12px;
-			letter-spacing: 1px;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			cursor: pointer;
-			color: white;
-			transition: var(--transition);
-			border: 1px solid hsla(0, 0%, 100%, 0.05);
-		}
-
-		.modal-close:hover {
-			border: 1px solid rgba(255, 255, 255, 0.616);
-		}
-		/* Navigation buttons removed */
 
 		.modal-image-container {
-			position: relative;
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			justify-content: center;
-			width: 100%;
-			max-width: 90vw;
-			max-height: 90vh;
-			overflow: visible;
-			padding-bottom: 60px;
+			padding-bottom: 50px;
 		}
-
-		.modal-loader {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			display: none;
-		}
-
-		.loader-spinner {
-			width: 40px;
-			height: 40px;
-			border: 3px solid rgba(255, 255, 255, 0.3);
-			border-top: 3px solid white;
-			border-radius: 50%;
-			animation: spin 1s linear infinite;
-		}
-
-		@keyframes spin {
-			0% {
-				transform: rotate(0deg);
-			}
-			100% {
-				transform: rotate(360deg);
-			}
+		.modal-close {
+			bottom: 15px;
+			padding: 6px 16px;
+			font-size: 13px;
 		}
 		.modal-info {
-			color: white;
-			padding: 12px 24px;
-			text-align: center;
-			width: 100%;
-			border-radius: 0 0 8px 8px;
-			margin-top: 0;
-			transition: opacity 0.3s ease;
+			padding: 10px 0;
+			margin-top: 12px;
 		}
-
 		.modal-image-title {
-			margin: 0;
-			font-size: 1.1rem;
-			font-weight: 600;
+			font-size: 1rem;
 		}
 
 		.modal-image-description {
-			margin: 8px 0 0;
-			font-size: 0.95rem;
-			opacity: 0.9;
-			line-height: 1.5;
+			font-size: 0.9rem;
 		}
-		#modal-image {
-			max-width: min(720px, 100%);
-			max-height: 90vh;
-			width: auto;
-			height: auto;
-			border-radius: 8px;
-			object-fit: contain;
-		} /* Body scroll lock when modal is open */
-		:global(body.modal-open) {
-			overflow: hidden;
-		}
-
-		.empty-state {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			min-height: 50vh;
-		}
-
-		.empty-content {
-			text-align: center;
-			max-width: 400px;
+	}
+	@media (max-width: 480px) {
+		.image-grid {
+			grid-template-columns: 1fr;
+			gap: var(--spacing-md);
 		}
 
 		.empty-icon {
-			font-size: 4rem;
-			margin-bottom: var(--spacing-lg);
-			opacity: 0.7;
+			font-size: 3rem;
+		}
+		.modal-content {
+			max-width: 98vw;
+			max-height: 80vh;
+		}
+		#modal-image {
+			max-width: 100%;
+			max-height: 70vh;
 		}
 
-		code {
-			background: var(--surface);
-			padding: 0.2em 0.4em;
-			border-radius: 4px;
-			font-family: var(--font-mono);
-			font-size: 0.9em;
-			color: var(--text-primary);
+		.modal-image-container {
+			padding-bottom: 45px;
 		}
-		@media (max-width: 768px) {
-			.visuals-page {
-				padding: var(--spacing-2xl) 0;
-			}
-
-			.image-grid {
-				grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr));
-				gap: var(--spacing-lg);
-			}
-
-			.page-header {
-				margin-bottom: var(--spacing-2xl);
-			}
-			.modal-content {
-				max-width: 95vw;
-				max-height: 85vh;
-			}
-			#modal-image {
-				max-width: 100%;
-			}
-
-			.modal-image-container {
-				padding-bottom: 50px;
-			}
-			.modal-close {
-				bottom: 15px;
-				padding: 6px 16px;
-				font-size: 13px;
-			}
-			.modal-info {
-				padding: 10px 0;
-				margin-top: 12px;
-			}
-			.modal-image-title {
-				font-size: 1rem;
-			}
-
-			.modal-image-description {
-				font-size: 0.9rem;
-			}
+		.modal-close {
+			bottom: 10px;
+			padding: 5px 14px;
+			font-size: 12px;
 		}
-		@media (max-width: 480px) {
-			.image-grid {
-				grid-template-columns: 1fr;
-				gap: var(--spacing-md);
-			}
-
-			.empty-icon {
-				font-size: 3rem;
-			}
-			.modal-content {
-				max-width: 98vw;
-				max-height: 80vh;
-			}
-			#modal-image {
-				max-width: 100%;
-				max-height: 70vh;
-			}
-
-			.modal-image-container {
-				padding-bottom: 45px;
-			}
-			.modal-close {
-				bottom: 10px;
-				padding: 5px 14px;
-				font-size: 12px;
-			}
-			.modal-info {
-				padding: 8px 0;
-				margin-top: 10px;
-			}
-			.modal-image-title {
-				font-size: 0.9rem;
-			}
-
-			.modal-image-description {
-				font-size: 0.85rem;
-				margin: 6px 0 0;
-			}
+		.modal-info {
+			padding: 8px 0;
+			margin-top: 10px;
 		}
-	</style>
+		.modal-image-title {
+			font-size: 0.9rem;
+		}
 
-	<script>
-		document.addEventListener("DOMContentLoaded", function () {
-			const modal = document.getElementById("image-modal") as HTMLElement;
-			const modalImage = document.getElementById(
-				"modal-image"
-			) as HTMLImageElement;
-			const modalClose = document.querySelector(".modal-close") as HTMLElement;
-			const modalBackdrop = document.querySelector(
-				".modal-backdrop"
-			) as HTMLElement;
-			const modalLoader = document.querySelector(
-				".modal-loader"
-			) as HTMLElement;
-			const modalDescription = document.getElementById(
-				"modal-description"
-			) as HTMLElement;
-			const imageItems = document.querySelectorAll(
-				".image-item"
-			) as NodeListOf<HTMLElement>;
+		.modal-image-description {
+			font-size: 0.85rem;
+			margin: 6px 0 0;
+		}
+	}
+</style>
 
-			if (!modal || !modalImage || !modalClose || !modalBackdrop) return;
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+		const modal = document.getElementById("image-modal") as HTMLElement;
+		const modalImage = document.getElementById(
+			"modal-image"
+		) as HTMLImageElement;
+		const modalClose = document.querySelector(".modal-close") as HTMLElement;
+		const modalBackdrop = document.querySelector(
+			".modal-backdrop"
+		) as HTMLElement;
+		const modalLoader = document.querySelector(".modal-loader") as HTMLElement;
+		const modalDescription = document.getElementById(
+			"modal-description"
+		) as HTMLElement;
+		const imageItems = document.querySelectorAll(
+			".image-item"
+		) as NodeListOf<HTMLElement>;
 
-			let currentImageIndex = 0;
-			const images = Array.from(imageItems).map((item) => ({
-				src: item.getAttribute("data-image-src") || "",
-				alt: item.getAttribute("data-image-alt") || "",
-				description: item.getAttribute("data-image-description") || "",
-				element: item,
-			}));
+		if (!modal || !modalImage || !modalClose || !modalBackdrop) return;
 
-			// Show loading state
-			function showLoader() {
-				if (modalLoader) modalLoader.style.display = "block";
-			}
+		let currentImageIndex = 0;
+		const images = Array.from(imageItems).map((item) => ({
+			src: item.getAttribute("data-image-src") || "",
+			alt: item.getAttribute("data-image-alt") || "",
+			description: item.getAttribute("data-image-description") || "",
+			element: item,
+		}));
 
-			// Hide loading state
-			function hideLoader() {
-				if (modalLoader) modalLoader.style.display = "none";
-			}
+		// Show loading state
+		function showLoader() {
+			if (modalLoader) modalLoader.style.display = "block";
+		}
 
-			// Update modal content
-			function updateModalContent(index: number) {
-				const image = images[index];
-				if (!image) return;
+		// Hide loading state
+		function hideLoader() {
+			if (modalLoader) modalLoader.style.display = "none";
+		}
 
-				showLoader();
+		// Update modal content
+		function updateModalContent(index: number) {
+			const image = images[index];
+			if (!image) return;
 
-				// Update image
-				modalImage.onload = () => hideLoader();
-				modalImage.onerror = () => hideLoader();
-				modalImage.src = image.src;
-				modalImage.alt = image.alt;
+			showLoader();
 
-				// Update description and modal info section
-				const modalInfo = document.querySelector(".modal-info") as HTMLElement;
-				if (modalDescription && modalInfo) {
-					if (image.description) {
-						modalDescription.textContent = image.description;
-						modalInfo.style.display = "block";
-					} else {
-						modalInfo.style.display = "none";
-					}
+			// Update image
+			modalImage.onload = () => hideLoader();
+			modalImage.onerror = () => hideLoader();
+			modalImage.src = image.src;
+			modalImage.alt = image.alt;
+
+			// Update description and modal info section
+			const modalInfo = document.querySelector(".modal-info") as HTMLElement;
+			if (modalDescription && modalInfo) {
+				if (image.description) {
+					modalDescription.textContent = image.description;
+					modalInfo.style.display = "block";
+				} else {
+					modalInfo.style.display = "none";
 				}
-
-				currentImageIndex = index;
 			}
 
-			// Open modal function
-			function openModal(imageSrc: string, imageAlt: string) {
-				const index = images.findIndex((img) => img.src === imageSrc);
-				if (index === -1) return;
+			currentImageIndex = index;
+		}
 
-				// Preload image before showing modal
-				const preloadImage = new Image();
-				preloadImage.src = imageSrc;
+		// Open modal function
+		function openModal(imageSrc: string, imageAlt: string) {
+			const index = images.findIndex((img) => img.src === imageSrc);
+			if (index === -1) return;
 
-				// Prepare the modal content without showing it
-				updateModalContent(index);
+			// Preload image before showing modal
+			const preloadImage = new Image();
+			preloadImage.src = imageSrc;
 
-				// Force a browser reflow to ensure CSS transitions work properly
-				void modal.offsetWidth;
+			// Prepare the modal content without showing it
+			updateModalContent(index);
 
-				// Show the modal with all elements appearing simultaneously
-				requestAnimationFrame(() => {
-					modal.classList.add("active");
-					modal.setAttribute("aria-hidden", "false");
-					document.body.classList.add("modal-open");
+			// Force a browser reflow to ensure CSS transitions work properly
+			void modal.offsetWidth;
 
-					// Focus the close button for accessibility
-					modalClose.focus();
-				});
-			}
+			// Show the modal with all elements appearing simultaneously
+			requestAnimationFrame(() => {
+				modal.classList.add("active");
+				modal.setAttribute("aria-hidden", "false");
+				document.body.classList.add("modal-open");
 
-			// Close modal function
-			function closeModal() {
-				modal.classList.remove("active");
-				modal.setAttribute("aria-hidden", "true");
-				document.body.classList.remove("modal-open");
+				// Focus the close button for accessibility
+				modalClose.focus();
+			});
+		}
 
-				// Clear the image source to free memory
-				setTimeout(() => {
-					if (!modal.classList.contains("active")) {
-						modalImage.src = "";
-						modalImage.alt = "";
-						hideLoader();
+		// Close modal function
+		function closeModal() {
+			modal.classList.remove("active");
+			modal.setAttribute("aria-hidden", "true");
+			document.body.classList.remove("modal-open");
 
-						// Reset modal info visibility for next opening
-						const modalInfo = document.querySelector(
-							".modal-info"
-						) as HTMLElement;
-						if (modalInfo) modalInfo.style.display = ""; // Reset to default
-					}
-				}, 300);
-			}
+			// Clear the image source to free memory
+			setTimeout(() => {
+				if (!modal.classList.contains("active")) {
+					modalImage.src = "";
+					modalImage.alt = "";
+					hideLoader();
 
-			// Add click listeners to image items
-			imageItems.forEach((item) => {
-				item.addEventListener("click", function () {
+					// Reset modal info visibility for next opening
+					const modalInfo = document.querySelector(
+						".modal-info"
+					) as HTMLElement;
+					if (modalInfo) modalInfo.style.display = ""; // Reset to default
+				}
+			}, 300);
+		}
+
+		// Add click listeners to image items
+		imageItems.forEach((item) => {
+			item.addEventListener("click", function () {
+				const imageSrc = item.getAttribute("data-image-src");
+				const imageAlt = item.getAttribute("data-image-alt");
+
+				if (imageSrc && imageAlt) {
+					openModal(imageSrc, imageAlt);
+				}
+			});
+
+			// Add keyboard support
+			item.addEventListener("keydown", function (e) {
+				if (e.key === "Enter" || e.key === " ") {
+					e.preventDefault();
 					const imageSrc = item.getAttribute("data-image-src");
 					const imageAlt = item.getAttribute("data-image-alt");
 
 					if (imageSrc && imageAlt) {
 						openModal(imageSrc, imageAlt);
 					}
-				});
-
-				// Add keyboard support
-				item.addEventListener("keydown", function (e) {
-					if (e.key === "Enter" || e.key === " ") {
-						e.preventDefault();
-						const imageSrc = item.getAttribute("data-image-src");
-						const imageAlt = item.getAttribute("data-image-alt");
-
-						if (imageSrc && imageAlt) {
-							openModal(imageSrc, imageAlt);
-						}
-					}
-				});
-
-				// Make items focusable for keyboard navigation
-				item.setAttribute("tabindex", "0");
-				item.setAttribute("role", "button");
-				item.setAttribute(
-					"aria-label",
-					`View image: ${item.getAttribute("data-image-alt")}`
-				);
-			});
-
-			// Close modal listeners
-			modalClose.addEventListener("click", closeModal);
-			modalBackdrop.addEventListener("click", closeModal);
-
-			// Keyboard navigation - only keep ESC
-			document.addEventListener("keydown", function (e) {
-				if (!modal.classList.contains("active")) return;
-
-				if (e.key === "Escape") {
-					closeModal();
 				}
 			});
 
-			// Prevent modal content clicks from closing the modal
-			document
-				.querySelector(".modal-image-container")
-				?.addEventListener("click", function (e) {
-					e.stopPropagation();
-				});
-
-			// Prevent modal info clicks from closing the modal
-			document
-				.querySelector(".modal-info")
-				?.addEventListener("click", function (e) {
-					e.stopPropagation();
-				});
+			// Make items focusable for keyboard navigation
+			item.setAttribute("tabindex", "0");
+			item.setAttribute("role", "button");
+			item.setAttribute(
+				"aria-label",
+				`View image: ${item.getAttribute("data-image-alt")}`
+			);
 		});
-	</script>
-</Layout>
+
+		// Close modal listeners
+		modalClose.addEventListener("click", closeModal);
+		modalBackdrop.addEventListener("click", closeModal);
+
+		// Keyboard navigation - only keep ESC
+		document.addEventListener("keydown", function (e) {
+			if (!modal.classList.contains("active")) return;
+
+			if (e.key === "Escape") {
+				closeModal();
+			}
+		});
+
+		// Prevent modal content clicks from closing the modal
+		document
+			.querySelector(".modal-image-container")
+			?.addEventListener("click", function (e) {
+				e.stopPropagation();
+			});
+
+		// Prevent modal info clicks from closing the modal
+		document
+			.querySelector(".modal-info")
+			?.addEventListener("click", function (e) {
+				e.stopPropagation();
+			});
+	});
+</script>
